@@ -15,16 +15,20 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btn;
     private Button set_btn;
-    static public TextView textView;
+    public static TextView textView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btn = (Button) findViewById(R.id.btn);
-        set_btn  =(Button) findViewById(R.id.set_btn);
-        textView= (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        set_btn  = findViewById(R.id.set_btn);
+        textView= findViewById(R.id.textView);
+
+
+        // -------- make internet connection check ------------ //
+
 
         set_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 SharedPreferences settings = getApplicationContext().getSharedPreferences("settings", 0);
-                final SharedPreferences.Editor editor = settings.edit();
+                //final SharedPreferences.Editor editor = settings.edit();
                 int id_key = settings.getInt("ID_KEY", 0);
                 if (id_key == 0) {
                     textView.setText("не задан пин-код");

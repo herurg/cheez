@@ -13,7 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-//import com.android.volley.toolbox.HttpResponse;
+
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -51,7 +51,7 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
 
         String prefix = "trash";
         SharedPreferences settings = getApplicationContext().getSharedPreferences("settings", 0);
-        final SharedPreferences.Editor editor = settings.edit();
+        //final SharedPreferences.Editor editor = settings.edit();
         int id_key = settings.getInt("ID_KEY", 0);
         if (id_key !=0) {prefix = Integer.toString(id_key);}
 
@@ -79,7 +79,8 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                MainActivity.textView.setText(error.toString());
+                String error_msg = error.toString();
+                MainActivity.textView.setText("Нет соединения с сервером обмена");
                 onBackPressed();
 
             }
