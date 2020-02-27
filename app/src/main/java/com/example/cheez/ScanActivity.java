@@ -50,12 +50,13 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
         // Log.v("tag", rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
 
         String prefix = "trash";
+
         SharedPreferences settings = getApplicationContext().getSharedPreferences("settings", 0);
         //final SharedPreferences.Editor editor = settings.edit();
         int id_key = settings.getInt("ID_KEY", 0);
         if (id_key !=0) {prefix = Integer.toString(id_key);}
 
-        String start_url = "http://18.236.145.246:8080/direct/";
+        String start_url = "http://35.158.139.6:8080/direct/";
         String qr = rawResult.getText();
         String qr_query = null;
         try {
@@ -63,6 +64,7 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+
         String full_url = start_url+prefix+"/"+qr_query;
 
 

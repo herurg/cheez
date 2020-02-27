@@ -10,6 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -28,6 +35,32 @@ public class MainActivity extends AppCompatActivity {
 
 
         // -------- make internet connection check ------------ //
+
+        String full_url = "http://google.com";
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, full_url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        String response_str = response.toString();
+                        MainActivity.textView.setText("Соединение установлено");
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                String error_msg = error.toString();
+                MainActivity.textView.setText("Нет соединения с Интернетом");
+
+
+            }
+        });
+
+
+
+        queue.add(stringRequest);
+        //-------------------------------------------------------------------//
 
 
         set_btn.setOnClickListener(new View.OnClickListener() {
