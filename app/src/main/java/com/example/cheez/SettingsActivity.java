@@ -19,6 +19,7 @@ public class SettingsActivity extends AppCompatActivity {
     private Button ok_btn;
     private  Button back_btn;
     private EditText id_text;
+    private EditText server_ip;
 
 
    @Override
@@ -27,21 +28,25 @@ public class SettingsActivity extends AppCompatActivity {
        SharedPreferences settings = getApplicationContext().getSharedPreferences("settings", 0);
        final SharedPreferences.Editor editor = settings.edit();
        int id_key = settings.getInt("ID_KEY", 0);
+       String srv_ip = settings.getString("SERVER_IP", "35.158.139.6");
 
         setContentView(R.layout.activity_settings);
         ok_btn = (Button) findViewById(R.id.ok_btn);
         back_btn = (Button) findViewById(R.id.back_btn);
         id_text = (EditText) findViewById(R.id.id_text);
+        server_ip = (EditText) findViewById(R.id.server_ip);
 
 
 
 
        id_text.setText(Integer.toString(id_key));
+       server_ip.setText(srv_ip);
 
        ok_btn.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                editor.putInt("ID_KEY",Integer.parseInt(id_text.getText().toString()));
+               editor.putString("SERVER_IP",server_ip.getText().toString());
                editor.apply();
 
                Intent intent1 = new Intent(SettingsActivity.this, MainActivity.class);

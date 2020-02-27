@@ -2,4 +2,8 @@
     <string name="app_name">Cheez - сканирование штрих-кодов</string>
     <string name="btn_text">"Новое сканирование"</string>
     <string name="default_text">"Готов к сканированию"</string>
+    <string name="pin">ПИН-код</string>
+    <string name="ip">Сервер обмена</string>
+    <string name="ok">OK</string>
+    <string name="back">НАЗАД</string>
 </resources>

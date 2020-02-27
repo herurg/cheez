@@ -56,7 +56,9 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
         int id_key = settings.getInt("ID_KEY", 0);
         if (id_key !=0) {prefix = Integer.toString(id_key);}
 
-        String start_url = "http://35.158.139.6:8080/direct/";
+        String srv_ip = settings.getString("SERVER_IP", "35.158.139.6");
+
+        String start_url = "http://"+srv_ip+":8080/direct/";
         String qr = rawResult.getText();
         String qr_query = null;
         try {
