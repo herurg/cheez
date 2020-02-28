@@ -27,7 +27,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(state);
        SharedPreferences settings = getApplicationContext().getSharedPreferences("settings", 0);
        final SharedPreferences.Editor editor = settings.edit();
-       int id_key = settings.getInt("ID_KEY", 0);
+       String id_key = settings.getString("ID_KEY", "введите ПИН");
        String srv_ip = settings.getString("SERVER_IP", "35.158.139.6");
 
         setContentView(R.layout.activity_settings);
@@ -39,13 +39,13 @@ public class SettingsActivity extends AppCompatActivity {
 
 
 
-       id_text.setText(Integer.toString(id_key));
+       id_text.setText(id_key);
        server_ip.setText(srv_ip);
 
        ok_btn.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               editor.putInt("ID_KEY",Integer.parseInt(id_text.getText().toString()));
+               editor.putString("ID_KEY",id_text.getText().toString());
                editor.putString("SERVER_IP",server_ip.getText().toString());
                editor.apply();
 
