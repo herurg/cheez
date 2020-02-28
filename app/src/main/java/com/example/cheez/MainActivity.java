@@ -78,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
 
                 SharedPreferences settings = getApplicationContext().getSharedPreferences("settings", 0);
                 //final SharedPreferences.Editor editor = settings.edit();
-                int id_key = settings.getInt("ID_KEY", 0);
-                if (id_key == 0) {
+                String id_key = settings.getString("ID_KEY", "trash");
+                if (id_key == "trash") {
                     textView.setText("не задан пин-код");
                 }
                 else {

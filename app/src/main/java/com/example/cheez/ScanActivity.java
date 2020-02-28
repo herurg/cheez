@@ -54,7 +54,10 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
         SharedPreferences settings = getApplicationContext().getSharedPreferences("settings", 0);
         //final SharedPreferences.Editor editor = settings.edit();
         String id_key = settings.getString("ID_KEY", "trash");
-        //if (id_key !=0) {prefix = Integer.toString(id_key);}
+
+        prefix = id_key;
+
+
 
         String srv_ip = settings.getString("SERVER_IP", "35.158.139.6");
 
